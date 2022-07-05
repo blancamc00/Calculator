@@ -5,33 +5,52 @@
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the calculator!");
-            Console.WriteLine("Please enter the first operator: ");
+            Console.WriteLine("Please enter the operator: ");
             string opera = Console.ReadLine();
             
-            Console.WriteLine("Enter first number");
-            string firstNumberString = Console.ReadLine();
-            double firstNumber = Double.Parse(firstNumberString);
-            
-            Console.WriteLine("Enter second number");
-            string secondNumberString = Console.ReadLine();
-            double secondNumber = Double.Parse(secondNumberString);
+            Console.WriteLine("How many numbers do you want to " + opera);
+            string sizeString = Console.ReadLine();
+            int size = int.Parse(sizeString);
 
-            double sol;
+            double[] numbers = new double[size];
+
+            for (int i = 0; i < size; i++)
+            {
+                Console.WriteLine("Enter number " + (i+1));
+                string temp = Console.ReadLine();
+                numbers[i] = Double.Parse(temp);
+            }
+            
+            
+
+            double sol = numbers[0];
             if (opera == "+")
             {
-                sol = firstNumber + secondNumber;
+                for (int i = 1; i < size; i++)
+                {
+                    sol += numbers[i];
+                }
             }
             else if (opera == "-")
             {
-                sol = firstNumber - secondNumber;
+                for (int i = 1; i < size; i++)
+                {
+                    sol -= numbers[i];
+                }
             }
             else if (opera == "*")
             {
-                sol = firstNumber * secondNumber;
+                for (int i = 1; i < size; i++)
+                {
+                    sol *= numbers[i];
+                }
             }
             else
             { 
-                sol = firstNumber / secondNumber;
+                for (int i = 1; i < size; i++)
+                {
+                    sol /= numbers[i];
+                }
             }
             
             Console.WriteLine("Solution: " + sol);
